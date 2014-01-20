@@ -1,11 +1,14 @@
 var app = angular.module('cashRegApp', []);
 
 app.controller('MainCtrl', function($scope) {
-  $scope.test = [
-    {num: 1, name: "tom"},
-    {num: 2, name: "sally"},
-    {num: 3, name: "ned"},
-  ];
+  
+  
+  $scope.addTax = function(amt){
+    var tax = 0.13;
+    var total = 0;
+    $scope.taxAmt = amt * tax;
+    $scope.totalAmt = amt * (1 + tax) ;
+  };
 
   console.log("herro");
 

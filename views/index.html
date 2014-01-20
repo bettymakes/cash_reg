@@ -5,20 +5,17 @@
     <link rel="stylesheet" href="../styles/bootstrap.min.css">
   </head>
   <body ng-controller="MainCtrl">
-    <div class="container">
-      <input ng-model="itemAmt"/>
-    </div>
     <div>
-      {{ test }}
-      <ul ng-repeat="obj in test">
-        <li> {{ obj.num }} </li>
-        <li> {{ obj.name }} </li>
-        <hr>
-      </ul>
+      <input ng-model="itemAmt"/>
+      <button ng-click="addTax(itemAmt)">Calculate</button>
+
     </div>
+    <h4>{{ taxAmt | currency }}</h4>
+    <h5>{{ totalAmt | currency }}</h5>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+    <script src="../scripts/bootstrap.min.js"></script>    
     <script src="../scripts/main.js"></script>
 
 
