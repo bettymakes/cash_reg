@@ -1,17 +1,26 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="cashRegApp">
   <head>
     <title>Cash Register</title>
     <link rel="stylesheet" href="../styles/bootstrap.min.css">
   </head>
-  <body ng-controller="cashRegCtrl">
+  <body ng-controller="MainCtrl">
     <div class="container">
       <input ng-model="itemAmt"/>
-      {{ textField }}
+    </div>
+    <div>
+      {{ test }}
+      <ul ng-repeat="obj in test">
+        <li> {{ obj.num }} </li>
+        <li> {{ obj.name }} </li>
+        <hr>
+      </ul>
     </div>
 
 
-    <script src="../scripts/angular.min.js"></script>
-    <script src="../scripts/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>    
+    <script src="../scripts/main.js"></script>
+
+
   </body>
 </html>
