@@ -5,15 +5,41 @@
     <link rel="stylesheet" href="../styles/bootstrap.min.css">
   </head>
   <body ng-controller="MainCtrl">
-    <div>
-      <input ng-model="itemAmt"/>
-      <button ng-click="addTax(itemAmt)">Calculate</button>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div>
+            <form>
+              <div class="form-group">
+              <label>Enter Item</label> 
+              <input class="form-control" ng-model="itemAmt" placeholder="Enter Price"/>
+              <button class="btn btn-success" ng-click="addItem(itemAmt)">Add</button>
+              </div>
+            </form> 
+          </div>
+          <div>
+            <strong>Tax</strong> 
+            <h5>{{ taxOnly| currency }}</h5>
+          </div>
+          <div>
+            <strong>Total</strong> 
+            <h4>{{ totalAmt  | currency }}</h4>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <h5>Purchases</h5>
+          <ul class="list-group">
+            <li ng-repeat="i in itemArray" class="list-group-item">
+              <span>{{ i | currency }} ({{ calcTaxOnly(i) | currency }})</span>
+              <button class="btn btn-danger pull-right btn-xs">Remove</button>
 
+            </li>
+          </ul>
+        </div>  
+      </div>
     </div>
-    <h4>{{ taxAmt | currency }}</h4>
-    <h5>{{ totalAmt | currency }}</h5>
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
     <script src="../scripts/bootstrap.min.js"></script>    
     <script src="../scripts/main.js"></script>
