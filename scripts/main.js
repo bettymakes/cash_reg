@@ -9,6 +9,7 @@ app.controller('MainCtrl', function($scope) {
   $scope.totalAmt = 0;
   $scope.itemArray = [];
   $scope.itemArraywithTax = [];
+  $scope.totalTax = 0;
 
   $scope.calcTaxOnly = function(amt){
     $scope.taxOnly = amt * tax;
@@ -20,15 +21,34 @@ app.controller('MainCtrl', function($scope) {
     $scope.itemArraywithTax.push($scope.taxIncl);
   };
 
-  $scope.calcTotal = function(amt){
+  $scope.calcTotal = function(){
     $scope.totalAmt += $scope.taxIncl;
+  }
+
+  $scope.calcTotalTax = function(){
+    $scope.totalTax += $scope.taxOnly;
   }
 
   $scope.addItem = function(amt){
     $scope.itemArray.push(amt);
     $scope.calcTaxOnly(amt);
     $scope.calcTaxIncl(amt);
-    $scope.calcTotal(amt);
+    $scope.calcTotalTax();
+    $scope.calcTotal();
+    $scope.clearInput();
+  };
+
+  $scope.clearInput = function(){
+    $scope.itemAmt = '';
+  };
+
+  $scope.removeItem = function(index){
+    var removing = $scope.itemArray.splice(index, 1);
+    removingNum = removing[0];
+    var removingTax = removingNum * 0.13;
+    var removingTotal = removingNum * 1.13;
+    $scope.totalTax -= removingTax;
+    $scope.totalAmt -= removingTotal;
   };
 
   console.log("herro");

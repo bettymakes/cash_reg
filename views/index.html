@@ -18,11 +18,11 @@
             </form> 
           </div>
           <div>
-            <strong>Tax</strong> 
-            <h5>{{ taxOnly| currency }}</h5>
+            <strong>Total Tax</strong> 
+            <h5>{{ totalTax | currency }}</h5>
           </div>
           <div>
-            <strong>Total</strong> 
+            <strong>Total Amount</strong> 
             <h4>{{ totalAmt  | currency }}</h4>
           </div>
         </div>
@@ -31,7 +31,7 @@
           <ul class="list-group">
             <li ng-repeat="i in itemArray" class="list-group-item">
               <span>{{ i | currency }} ({{ calcTaxOnly(i) | currency }})</span>
-              <button class="btn btn-danger pull-right btn-xs">Remove</button>
+              <button class="btn btn-danger pull-right btn-xs" ng-click="removeItem($index)">Remove</button>
 
             </li>
           </ul>
